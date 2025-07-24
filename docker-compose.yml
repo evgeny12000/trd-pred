@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+    postgres-trd:
+        image: ankane/pgvector
+        restart: always
+        ports:
+            - '${POSTGRES_PORT}:5432'
+        container_name: ${DOCKER_CONTAINER_NAME}
+        environment:
+            POSTGRES_USER: ${DATABASE_USER}
+            POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+            POSTGRES_DB: ${DATABASE_NAME}
+        volumes:
+            - postgres-trd:/var/lib/postgresql/data
+
+volumes:
+    postgres-trd:
